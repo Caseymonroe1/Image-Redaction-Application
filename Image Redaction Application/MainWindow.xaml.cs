@@ -115,7 +115,7 @@ namespace Image_Redaction_Application
             if (modifiedImage is BitmapImage bitmapImage && bitmapImage.UriSource != null)
             {
                 //constructing path for spray paint JSON
-                string sprayPaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, "Ellipses", $"{filename}-edited.json");
+                string sprayPaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, $"{filename}-edited.json");
                 SaveSprayPaint(sprayPaintFilePath);
                 //have user choose where to save a PNG copy of the image with spray paint applied
                 string modifiedImageFilePath = GetSaveFilePath("PNG Files (*.png)|*.png", "Select Image File");
@@ -183,9 +183,9 @@ namespace Image_Redaction_Application
             if (modifiedImage is BitmapImage bitmapImage && bitmapImage.UriSource != null)
             {
                 //creating paths for the image file and ellipses JSON
-                string sprayPaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, "Ellipses", $"{filename}-edited.json");
+                string sprayPaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, $"{filename}-edited.json");
                 SaveSprayPaint(sprayPaintFilePath);
-                string ImagePaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, "Images", $"{filename}-painted.png");
+                string ImagePaintFilePath = System.IO.Path.Combine(Environment.CurrentDirectory, $"{filename}-painted.png");
                 SaveModifiedImage(ImagePaintFilePath);
                 //resetting the canvas
                 Image.Source = null;
@@ -204,7 +204,7 @@ namespace Image_Redaction_Application
 
             }
             filename = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-            string EllipsesFile = System.IO.Path.Combine(Environment.CurrentDirectory, "Ellipses", $"{filename}-edited.json");
+            string EllipsesFile = System.IO.Path.Combine(Environment.CurrentDirectory,  $"{filename}-edited.json");
             Debug.WriteLine(EllipsesFile + "is the path in loadimage_click");
             LoadSprayPaint(EllipsesFile);
             Debug.WriteLine("first file name: " + filename);
