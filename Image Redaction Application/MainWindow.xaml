@@ -1,0 +1,59 @@
+﻿<Window x:Class="Image_Redaction_Application.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Image_Redaction_Application"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- Two columns in the Grid -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <!-- 80% for the image -->
+            <ColumnDefinition Width="15*" />
+            <!-- 20% for the buttons -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Column 1: Image -->
+
+        <Viewbox Grid.Column="0">
+            <Canvas Name="ImageControl" MouseDown="ImageControl_MouseDown" MouseMove="ImageControl_MouseMove" Margin="28,25,0,32" 
+                    Cursor="Pen" HorizontalAlignment="Left" Width="624" >
+                <Image Name="Image" Stretch ="Fill" Width="604" Height="383" Canvas.Left="10" Canvas.Top="10" />
+            </Canvas>
+        </Viewbox>
+
+
+        <!-- Column 2: Buttons -->
+        <Viewbox HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
+            <StackPanel Grid.Column="1" Background="LightGray" >
+                <TextBlock Text="Features" TextAlignment="Center" FontSize="13" />
+                <TextBlock Text="Paint Density" Margin="0,5,0,0" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="DensitySlider" Minimum="1" Maximum="10.0" Value="5.0" Width="100"  ValueChanged="DensitySlider_ValueChanged" />
+                <TextBlock Text="Paint Opacity" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="OpacitySlider" Minimum="0.1" Maximum="1.0" Value="0.5" Width="100"  ValueChanged="OpacitySlider_ValueChanged"/>
+                <TextBlock Text="Eraser Size" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="EraserSizeSlider" Minimum="1" Maximum="50" Value="10" Width="100" Margin="0,0,0,10" ValueChanged="EraserSizeSlider_ValueChanged"/>
+
+                <TextBlock Text="Colors:" TextAlignment="Center" FontSize="13" />
+                <TextBlock Text="Red" Margin="0,10,0,0" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="RedSlider" Minimum="0" Maximum="255" Value="0" Width="100" Margin="0,0,0,0" ValueChanged="RedSlider_ValueChanged"/>
+                <TextBlock Text="Green" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="GreenSlider" Minimum="0" Maximum="255" Value="0" Width="100" Margin="0,0,0,0"  ValueChanged="GreenSlider_ValueChanged"/>
+                <TextBlock Text="Blue" TextAlignment="Center" FontSize="13" />
+                <Slider x:Name="BlueSlider" Minimum="0" Maximum="255" Value="150" Width="100" Margin="0,0,0,10" ValueChanged="BlueSlider_ValueChanged"/>
+                <Button Content="Toggle Erase"  Grid.Column="1"  Click="EraseButton_Click" />
+                <Button Content="Erase All"  Grid.Column="1" Click="EraseAll_Click" />
+                <Button Content="Save Copy"  Grid.Column="1"  Click="SaveImage_Click" />
+
+                <Button Content="Load Image"  Grid.Column="1"  Click="LoadImage_Click" />
+            </StackPanel>
+        </Viewbox>
+
+
+
+
+    </Grid>
+</Window>
+

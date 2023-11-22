@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image Redaction Application", "Image Redaction Application\Image Redaction Application.csproj", "{509738CB-88B5-4A3B-842F-E46705B06520}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{509738CB-88B5-4A3B-842F-E46705B06520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509738CB-88B5-4A3B-842F-E46705B06520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509738CB-88B5-4A3B-842F-E46705B06520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509738CB-88B5-4A3B-842F-E46705B06520}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A7AAB51-C076-4330-9675-A025A0C514AC}
+	EndGlobalSection
+EndGlobal
