@@ -43,6 +43,7 @@
                 <Slider x:Name="GreenSlider" Minimum="0" Maximum="255" Value="0" Width="100" Margin="0,0,0,0"  ValueChanged="GreenSlider_ValueChanged"/>
                 <TextBlock Text="Blue" TextAlignment="Center" FontSize="13" />
                 <Slider x:Name="BlueSlider" Minimum="0" Maximum="255" Value="150" Width="100" Margin="0,0,0,10" ValueChanged="BlueSlider_ValueChanged"/>
+                <Button Name="RedactFaces" Content="Redact Faces"  Grid.Column="1"  Click="RedactFaces_Click" />
                 <Button Content="Toggle Erase"  Grid.Column="1"  Click="EraseButton_Click" />
                 <Button Content="Erase All"  Grid.Column="1" Click="EraseAll_Click" />
                 <Button Content="Save Copy"  Grid.Column="1"  Click="SaveImage_Click" />
