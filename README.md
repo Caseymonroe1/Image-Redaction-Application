@@ -1,5 +1,7 @@
 # Image-Redaction-Application
 This is a spray painting application with features such as changing the density and size of the spray paint brush, and changing the color of the brush using RGB values. There is also an eraser with an adjustable size. The image can be saved with the paint on it, and after it is saved, the original image can still be reopened with its previous spray paint loaded in. The spray paint is saved inside the application in a JSON file. The user can load different images after they loading and saving an image.
+
+
 ![Example of Image-Redaction-Application](https://github.com/Caseymonroe1/Image-Redaction-Application/blob/master/Example.gif)
 
 Instructions:
