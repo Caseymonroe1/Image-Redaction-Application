@@ -17,18 +17,34 @@
 
         <!-- Column 1: Image -->
 
-        <Viewbox Grid.Column="0">
-            <Canvas Name="ImageControl" MouseDown="ImageControl_MouseDown" MouseMove="ImageControl_MouseMove" Margin="28,25,0,32" 
-                    Cursor="Pen" HorizontalAlignment="Left" Width="624" >
-                <Image Name="Image" Stretch ="Fill" Width="604" Height="383" Canvas.Left="10" Canvas.Top="10" />
+        <Viewbox Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,116,0">
+
+            <Canvas Name="ImageControl" MouseDown="ImageControl_MouseDown" MouseMove="ImageControl_MouseMove" 
+                    Cursor="Pen" HorizontalAlignment="Center" Width="1073" Height="654" >
+                <Border Canvas.Left="0" Canvas.Top="-15" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center" Height="718" VerticalAlignment="Top">
+
+                    <Image Name="Image" Stretch ="Uniform" HorizontalAlignment="Center"  Width="1095" Height="699" Canvas.Left="0" Canvas.Top="0" />
+                </Border>
             </Canvas>
+
+
         </Viewbox>
 
 
         <!-- Column 2: Buttons -->
         <Viewbox HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center">
-            <StackPanel Grid.Column="1" Background="LightGray" >
-                <TextBlock Text="Features" TextAlignment="Center" FontSize="13" />
+
+            <StackPanel Grid.Column="1" Background="LightGray" Height="440" >
+
+                <ComboBox x:Name="FilterComboBox" Text="Add Filter" HorizontalAlignment="Right"  Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged" Width="102">
+                    <ComboBoxItem Content="No Filter"/>
+                    <ComboBoxItem Content="Grey Filter"/>
+                    <ComboBoxItem Content="Edge Filter"/>
+                    <ComboBoxItem Content="Filter 3"/>
+                    <!-- Add other filters as needed -->
+                </ComboBox>
+
+
                 <TextBlock Text="Paint Density" Margin="0,5,0,0" TextAlignment="Center" FontSize="13" />
                 <Slider x:Name="DensitySlider" Minimum="1" Maximum="10.0" Value="5.0" Width="100"  ValueChanged="DensitySlider_ValueChanged" />
                 <TextBlock Text="Paint Opacity" TextAlignment="Center" FontSize="13" />
@@ -42,13 +58,16 @@
                 <TextBlock Text="Green" TextAlignment="Center" FontSize="13" />
                 <Slider x:Name="GreenSlider" Minimum="0" Maximum="255" Value="0" Width="100" Margin="0,0,0,0"  ValueChanged="GreenSlider_ValueChanged"/>
                 <TextBlock Text="Blue" TextAlignment="Center" FontSize="13" />
+
                 <Slider x:Name="BlueSlider" Minimum="0" Maximum="255" Value="150" Width="100" Margin="0,0,0,10" ValueChanged="BlueSlider_ValueChanged"/>
+
                 <Button Name="RedactFaces" Content="Redact Faces"  Grid.Column="1"  Click="RedactFaces_Click" />
                 <Button Content="Toggle Erase"  Grid.Column="1"  Click="EraseButton_Click" />
-                <Button Content="Erase All"  Grid.Column="1" Click="EraseAll_Click" />
-                <Button Content="Save Copy"  Grid.Column="1"  Click="SaveImage_Click" />
+                <Button Content="Erase All"  Grid.Column="1" Click="EraseAll_Click" VerticalAlignment="Bottom"/>
+                <Button Content="Save Copy"  Grid.Column="1"  Click="SaveImage_Click" VerticalAlignment="Bottom" />
 
-                <Button Content="Load Image"  Grid.Column="1"  Click="LoadImage_Click" />
+                <Button Content="Load Image"  Grid.Column="1"  Click="LoadImage_Click"  VerticalAlignment="Bottom"/>
+                <Button Content="Reveal Metadata"  Grid.Column="1"  Click="RevealMetadata_Click" Margin="0,0,0,15" VerticalAlignment="Bottom"/>
             </StackPanel>
         </Viewbox>
 

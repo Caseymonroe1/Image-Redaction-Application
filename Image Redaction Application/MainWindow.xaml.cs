@@ -16,7 +16,11 @@ using Emgu.CV.Structure;
 using Emgu.CV.Cuda;
 using System.Drawing;
 using OpenCvSharp;
-
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
+using System.Text;
+//next step is updating the .exe file so it works
+//then add more documentation to github, with gifs of the face redaction doing well
 
 namespace Image_Redaction_Application
 {
@@ -72,8 +76,30 @@ namespace Image_Redaction_Application
             public double Opacity { get; set; }
             public required SolidColorBrush EllipseColor { get; set; }
         }
+        // gonna finish this later
+        private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Get the selected filter
+            var selectedFilter = (sender as ComboBox).SelectedItem as ComboBoxItem;
+            if (selectedFilter != null)
+            {
+                ApplyFilterToImage(selectedFilter.Content.ToString());
+            }
+        }
 
+        private void ApplyFilterToImage(string filterName)
+        {
+            // Implement the logic to apply the selected filter to the image
+            // For example, adjust the image's properties based on the filter
+            if (filterName == "1")
+            {
 
+            }
+            // After applying the filter, update the metadata display
+            Console.WriteLine("apply filter to image works");
+        }
+
+        
         //hardcoded values for bitmap dimensions and formats, consider making them configurable
         private void SaveModifiedImage(string filePath)
         {
@@ -106,6 +132,8 @@ namespace Image_Redaction_Application
             BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(renderTarget));
 
+
+
             //saving the modified image and writing it into the file
             try
             {
@@ -123,7 +151,37 @@ namespace Image_Redaction_Application
 
 
         }
+        private void RevealMetadata_Click(object sender, RoutedEventArgs e)
+        {
+            //checks to make sure that an image has been loaded in
+            
+            if (modifiedImage is BitmapImage bitmapImage && bitmapImage.UriSource != null) // Ensure an image is loaded
+            {
+                MetadataWindow metadataWindow = new MetadataWindow();
+                string metadata = LoadImageMetadata(fileNameExtension); // Your method to load metadata
+                metadataWindow.SetMetadataText(metadata);
+                metadataWindow.ShowDialog(); // Show the window as a modal dialog
+            }
+            else
+            {
+                MessageBox.Show("No image loaded.");
+            }
 
+
+        }
+        private string LoadImageMetadata(string imagePath)
+        {
+            var directories = ImageMetadataReader.ReadMetadata(imagePath);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var directory in directories)
+            {
+                foreach (var tag in directory.Tags)
+                    sb.AppendLine($"{directory.Name} - {tag.Name}: {tag.Description}");
+            }
+
+            return sb.ToString();
+        }
         private void SaveSprayPaint(string filePath)
         {
 
@@ -282,15 +340,19 @@ namespace Image_Redaction_Application
 
 
             }
-            fileNameExtension = System.IO.Path.GetFullPath(openFileDialog.FileName);
-            System.Diagnostics.Debug.WriteLine(fileNameExtension);
-            filename = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-            string EllipsesFile = System.IO.Path.Combine(Environment.CurrentDirectory, $"{filename}-edited.json");
-            Debug.WriteLine(EllipsesFile + "is the path in loadimage_click");
-            LoadSprayPaint(EllipsesFile);
-            Debug.WriteLine("first file name: " + filename);
-            ImageControl.Width = Image.Width;
-            ImageControl.Height = Image.Height;
+
+            if (openFileDialog.FileName != "")
+            {
+                fileNameExtension = System.IO.Path.GetFullPath(openFileDialog.FileName);
+                System.Diagnostics.Debug.WriteLine(fileNameExtension);
+                filename = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+                string EllipsesFile = System.IO.Path.Combine(Environment.CurrentDirectory, $"{filename}-edited.json");
+                Debug.WriteLine(EllipsesFile + "is the path in loadimage_click");
+                LoadSprayPaint(EllipsesFile);
+                Debug.WriteLine("first file name: " + filename);
+                ImageControl.Width = Image.Width;
+                ImageControl.Height = Image.Height;
+            }
         }
 
         private void ImageControl_MouseDown(object sender, MouseButtonEventArgs e)
@@ -333,15 +395,17 @@ namespace Image_Redaction_Application
             sprayPaintData.Ellipses.Clear();
 
             // Create a list to hold non-ellipse children that you want to keep
-            var BlankImageControl = ImageControl.Children.OfType<System.Windows.Controls.Image>().FirstOrDefault();
+            var BlankImageControl = ImageControl.Children.OfType<Border>().FirstOrDefault();
             // Clear all children
             ImageControl.Children.Clear();
 
             // Add back the non-ellipse children
             if (BlankImageControl != null)
             {
+                //BlankImageControl.Child = null;
                 ImageControl.Children.Add(BlankImageControl);
             }
+
         }
         private HitTestResultBehavior HitTestCallback(HitTestResult result)
         {

@@ -1,0 +1,70 @@
+﻿<Window x:Class="Image_Redaction_Application.MetadataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Image_Redaction_Application"
+        mc:Ignorable="d"
+        Title="MetadataWindow" Height="450" Width="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <Grid Width="593">
+        <Grid.RowDefinitions>
+            <!-- Define rows for each metadata section and its title -->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- JPEG Information Title -->
+        <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="13" Text="JPEG Information" Margin="5"/>
+        <!-- JPEG Information TextBox -->
+        <TextBox Grid.Row="1" x:Name="JpegTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- JFIF Information Title -->
+        <TextBlock Grid.Row="2" FontWeight="Bold" FontSize="13" Text="JFIF Information" Margin="5"/>
+        <!-- JFIF Information TextBox -->
+        <TextBox Grid.Row="3" x:Name="JfifTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- Exif Data Title -->
+        <TextBlock Grid.Row="4" FontWeight="Bold" FontSize="13" Text="Exif Data" Margin="5"/>
+        <!-- Exif Data TextBox -->
+        <TextBox Grid.Row="5" x:Name="ExifTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- ICC Profile Title -->
+        <TextBlock Grid.Row="6" FontWeight="Bold" FontSize="13" Text="ICC Profile" Margin="5"/>
+        <!-- ICC Profile TextBox -->
+        <TextBox Grid.Row="7" x:Name="ICCProfileTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- File Type Information Title -->
+        <TextBlock Grid.Row="8" FontWeight="Bold" FontSize="13" Text="File Type Information" Margin="5"/>
+        <!-- File Type Information TextBox -->
+        <TextBox Grid.Row="9" x:Name="FileTypeTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- File Information Title -->
+        <TextBlock Grid.Row="10" FontWeight="Bold" FontSize="13" Text="File Information" Margin="5"/>
+        <!-- File Information TextBox -->
+        <TextBox Grid.Row="11" x:Name="FileInfoTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- Photoshop Data Title -->
+        <TextBlock Grid.Row="12" FontWeight="Bold" FontSize="13" Text="Photoshop Data" Margin="5"/>
+        <!-- Photoshop Data TextBox -->
+        <TextBox Grid.Row="13" x:Name="PhotoshopTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+
+        <!-- Huffman Data Title -->
+        <TextBlock Grid.Row="14" FontWeight="Bold" FontSize="13" Text="Huffman Data" Margin="5"/>
+        <!-- Huffman Data TextBox -->
+        <TextBox Grid.Row="15" x:Name="HuffmanTextBox" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+    </Grid>
+    </ScrollViewer>
+</Window>
